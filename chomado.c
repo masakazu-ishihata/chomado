@@ -250,6 +250,9 @@ void chomado_search(void)
   int i;
   node *n, *r = node_new_root();
   ilist *nl = ilist_new();
+  double t1, t2;
+
+  t1 = itime_get();
 
   ilist_push(nl, r);
 
@@ -263,9 +266,10 @@ void chomado_search(void)
       if(n->ch[i] != NULL) ilist_push(nl, n->ch[i]);
   }
 
+  t2 = itime_get();
+
   /* result */
-  printf("worst # submits = %d\n", node_depth(r) - 1);
-  printf("# solutions     = %d\n", node_nleaf(r));
+  printf("N = %2d : |A| = %7u, W = %d, T = %e\n", N, node_nleaf(r), node_depth(r)-1, t2-t1);
 
   node_free(r);
 }

@@ -87,15 +87,15 @@ m 択問題が n 問与えられたとする。
 
 更に `x`, `C` に対して `I(x, C)` を以下とする。  
 
-`I(x, C) = - \sum_{h \in V} p(x, h, C) log p(x, h, C)`
-`p(x, h, C) = N(x, h, C) / N(x, C)`
-`N(x, C) = \sum_{h \in V} N(x, h, C)`
+`I(x, C) = - \sum_{h \in V} p(x, h, C) log p(x, h, C)`  
+`p(x, h, C) = N(x, h, C) / N(x, C)`  
+`N(x, C) = \sum_{h \in V} N(x, h, C)`  
 
 つまり `I(x, C)` は解答 `x` を提出した時に得られる平均情報量である。  
 
 この情報量を元に解答戦略 `S` を以下のように定める。
 
-`S(x_{1,i}, h_{1,i}) = argmax_{x \myin A} I(x, C_i)`
+`S(x_{1,i}, h_{1,i}) = argmax_{x \myin A} I(x, C_i)`  
 
 つまりこの解答戦略 `S` は現時点の解候補 `C_i` を考えたとき、  
 得られる平均情報量を最大化するように次の戦略 `x_{i+1}` を決定する。  

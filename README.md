@@ -81,7 +81,7 @@ m 択問題が n 問与えられたとする。
 
 `x \in A`, `h \in V`, `C \subseteq A` に対して `N(x, h, C)` を以下とする。  
 
-`N(x, h, C) = |\{c \in C | hamming(x, c) = h\}|
+`N(x, h, C) = |\{c \in C | hamming(x, c) = h\}|`  
 
 つまり `N(x, h, C)` は `C` 中の `hamming(x, c) = h` となる `c` の数である。  
 

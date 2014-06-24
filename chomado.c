@@ -74,8 +74,8 @@ ui chomado_select(int _nc, ui *_c)
     for(i=0; i<_nc; h[ chomado_compare(x, _c[i]) ]++, i++);
 
     /* entropy */
-    e = chomado_entropy(h);
-    //    e = chomado_wsi(h);
+    //    e = chomado_entropy(h);
+    e = chomado_wsi(h);
     if(max_e < e){
       max_x = x;
       max_e = e;

@@ -88,6 +88,7 @@ ui chomado_select(int _nc, ui *_c)
 /*----------------------------------------------------------------------------*/
 /* search tree */
 /*----------------------------------------------------------------------------*/
+ui node_num = 0;
 /*------------------------------------*/
 /* create a new node */
 /*------------------------------------*/
@@ -98,6 +99,7 @@ node *node_new(void)
 
   n = (node *)imalloc(sizeof(node), "");
   for(i=0; i<=N; n->ch[i]=NULL, i++);
+  n->id = node_num++;
   n->nc = 0;
   n->c  = NULL;
   n->x  = 0;
@@ -183,6 +185,20 @@ ui node_nleaf(node *_n)
   if(n == 0)  return 1;
   else        return n;
 }
+/*------------------------------------*/
+/* show */
+/*------------------------------------*/
+void node_show(node *_n)
+{
+  int i;
+
+  printf("Node %u\n", _n->id);
+  printf("Try "); chomado_print(_n->x);
+  printf("Go  ");
+  for(i=0; i<=N; i++)
+    if(_n->ch[i] != NULL) printf(" %d:%u", i, (_n->ch[i])->id);
+  printf("\n");
+}
 
 /*----------------------------------------------------------------------------*/
 /* utils */
@@ -257,13 +273,13 @@ void chomado_search(void)
   ilist_push(nl, r);
 
   while((n = ilist_shift(nl)) != NULL){
-    /* current node */
-    printf("%10u ", n->nc); chomado_print(n->x);
-
     /* expand */
     node_expand(n);
     for(i=0; i<=N; i++)
       if(n->ch[i] != NULL) ilist_push(nl, n->ch[i]);
+
+    /* current node */
+    node_show(n);
   }
 
   t2 = itime_get();

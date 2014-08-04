@@ -30,6 +30,7 @@ typedef struct NODE node;
 struct NODE
 {
   node *ch[N+1];  /* children */
+  ui id;          /* ID */
   ui nc;          /* # candidates */
   ui *c;          /* candidattes */
   ui x;           /* tested pattern */
@@ -41,7 +42,7 @@ void  node_expand_at(node *_n, int _s);
 void  node_expand(node *_n);
 ui    node_depth(node *_n);
 ui    node_nleaf(node *_n);
-
+void  node_show(node *_n);
 /*------------------------------------*/
 /* utils */
 /*------------------------------------*/
